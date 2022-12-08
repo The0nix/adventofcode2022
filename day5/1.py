@@ -1,11 +1,11 @@
+import re
 from pathlib import Path
 
 import click
-import parse
 
 from stacks import Stacks
 
-PARSE_STRING = 'move {number} from {from_index} to {to_index}'
+PARSE_RE = re.compile(r'move (?P<number>\d+) from (?P<from_index>\d+) to (?P<to_index>\d+)')
 
 
 @click.command()
@@ -16,9 +16,10 @@ def main(input: Path) -> None:
         stacks.print_drawing()
         f.readline()
         for line in f:
-            parsed_command = parse.parse(PARSE_STRING, line.strip())
-            parsed_command = {key: int(value) for key, value in parsed_command.named.items()}
-            stacks.move(**parsed_command)
+            parsed_command = PARSE_RE.match(line.strip())
+            if parsed_command:
+                kwargs = {k: int(v) for k, v in parsed_command.groupdict().items()}
+                stacks.move(**kwargs)
     stacks.print_drawing()
     print(''.join(stacks.get_tops()))
 

@@ -9,7 +9,7 @@ from unique_counting_limited_queue import UniqueCountingLimitedQueue
 @click.argument('input', type=Path)
 def main(input: Path) -> None:
     with open(input) as f:
-        uclq = UniqueCountingLimitedQueue(14)
+        uclq: UniqueCountingLimitedQueue[str] = UniqueCountingLimitedQueue(4)
         for i in itertools.count(1):
             symbol = f.read(1)
             if symbol == '\n':

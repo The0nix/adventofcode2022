@@ -4,12 +4,12 @@ from typing import Iterable
 
 class Stacks:
     def __init__(self) -> None:
-        self.stacks = collections.defaultdict(list)
+        self.stacks: collections.defaultdict[int, list[str]] = collections.defaultdict(list)
 
     @classmethod
-    def from_lines(cls, f: Iterable):
+    def from_lines(cls, lines: Iterable[str]):
         object = cls()
-        for line in f:
+        for line in lines:
             if line[1] == '1':
                 break
             for i in range(len(line) // 4):
@@ -27,7 +27,7 @@ class Stacks:
         for stack in self.stacks.values():
             stack.reverse()
 
-    def move(self, number: int, from_index: int, to_index: int, reverse=True) -> None:
+    def move(self, number: int, from_index: int, to_index: int, reverse: bool = True) -> None:
         boxes_to_move = self.stacks[from_index][-number:]
         del self.stacks[from_index][-number:]
         if reverse:
@@ -35,7 +35,7 @@ class Stacks:
         self.stacks[to_index].extend(boxes_to_move)
 
     def get_tops(self):
-        return [stack[-1] for index, stack in sorted(self.stacks.items(), key=lambda item: item[0])]
+        return [stack[-1] for _, stack in sorted(self.stacks.items(), key=lambda item: item[0])]
 
     def print_drawing(self):
         height = max(len(s) for s in self.stacks.values())

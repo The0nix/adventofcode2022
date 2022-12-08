@@ -18,10 +18,23 @@ class Figure:
     def __init__(self, type: FigureType) -> None:
         self.type = type
 
-    def __eq__(self, other: Figure) -> bool:
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Figure):
+            return NotImplemented
         return self.type == other.type
 
     def __lt__(self, other: Figure) -> bool:
+        if (
+            self.type == FigureType.ROCK and other.type == FigureType.PAPER or
+            self.type == FigureType.PAPER and other.type == FigureType.SCISSORS or
+            self.type == FigureType.SCISSORS and other.type == FigureType.ROCK
+        ):
+            return True
+        return False
+
+    def __le__(self, other: Figure) -> bool:
+        if self == other:
+            return True
         if (
             self.type == FigureType.ROCK and other.type == FigureType.PAPER or
             self.type == FigureType.PAPER and other.type == FigureType.SCISSORS or

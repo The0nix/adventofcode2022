@@ -2,16 +2,16 @@ from __future__ import annotations
 
 
 class Interval:
-    def __init__(self, start, end):
+    def __init__(self, start: int, end: int) -> None:
         self._start = start
         self._end = end
 
     @property
-    def start(self):
+    def start(self) -> int:
         return self._start
 
     @property
-    def end(self):
+    def end(self) -> int:
         return self._end
 
     def __contains__(self, other: Interval) -> bool:
@@ -24,6 +24,6 @@ class Interval:
         return max(0, self.end - self.start + 1)
 
     @classmethod
-    def from_string(cls, string, delimiter='-') -> Interval:
+    def from_string(cls, string: str, delimiter: str = '-') -> Interval:
         start, end = string.split(delimiter)
         return cls(int(start), int(end))
