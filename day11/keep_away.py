@@ -1,7 +1,7 @@
 import copy
-from typing import Iterable
+from collections.abc import Iterable
 
-from monkey import Monkey
+from day11.monkey import Monkey
 
 MonkeyLevel = int
 

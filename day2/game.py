@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from figure import Figure
+from day2.figure import Figure
 
 
 class Game:

@@ -56,7 +56,6 @@ class Test:
     def divisor(self):
         return self._divisor
 
-
     def __call__(self, value: WorryLevel) -> MonkeyID:
         if value % self._divisor == 0:
             return self._true_monkey_id

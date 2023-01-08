@@ -2,15 +2,16 @@ from __future__ import annotations
 import re
 import time
 import copy
-from typing import Union, Iterable, Generator
+from collections.abc import Iterable, Generator
+from typing import Union
 from dataclasses import dataclass
 from enum import Enum
 
 
 @dataclass(order=True, frozen=True)
 class Position:
-    x: int = 0  # Vertical left to right
-    y: int = 0  # Horizontal top to bottom
+    x: int = 0  # Horizontal left to right
+    y: int = 0  # Vertical top to bottom
 
     def __add__(self, other: Union[Position, tuple[int, int]]) -> Position:
         if isinstance(other, Position):

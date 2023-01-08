@@ -10,6 +10,7 @@ class Stacks:
     def from_lines(cls, lines: Iterable[str]):
         object = cls()
         for line in lines:
+            
             if line[1] == '1':
                 break
             for i in range(len(line) // 4):

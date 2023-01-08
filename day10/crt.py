@@ -1,6 +1,7 @@
-from typing import Optional, Iterable
+from collections.abc import Iterable
+from typing import Optional
 
-from cpu import CPU
+from day10.cpu import CPU
 
 
 class FrameEnded(Exception):
@@ -40,5 +41,5 @@ class CRT:
             while self._current_cycle < self._cpu.current_cycle:
                 self._draw_pixel(sprite_position)
 
-    def draw_image(self) -> None:
-        print('\n'.join(''.join(column for column in row) for row in self._image_buffer))
+    def get_image(self) -> str:
+        return '\n'.join(''.join(column for column in row) for row in self._image_buffer)

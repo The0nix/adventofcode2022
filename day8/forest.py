@@ -1,6 +1,7 @@
 from __future__ import annotations
 import math
-from typing import Optional, Iterable
+from collections.abc import Iterable
+from typing import Optional
 
 
 class Tree:

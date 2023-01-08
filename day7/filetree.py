@@ -1,6 +1,7 @@
 from __future__ import annotations
 import collections
-from typing import Optional, Generator
+from collections.abc import Generator
+from typing import Optional
 
 
 class File:

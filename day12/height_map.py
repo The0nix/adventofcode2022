@@ -1,6 +1,7 @@
 from __future__ import annotations
 import collections
-from typing import Iterable, Optional, Union
+from collections.abc import Iterable
+from typing import Optional, Union
 from dataclasses import dataclass
 
 Height = str
@@ -77,13 +78,4 @@ class HeightMap:
         return self._get_shortest_path_length(self._start, self._end)
 
     def find_hiking_trail_length(self) -> Optional[int]:
-        # from tqdm.auto import tqdm
-        # results: list[int] = []
-        # for x in tqdm(range(len(self._map))):
-        #     for y in tqdm(range(len(self._map[0])), leave=False):
-        #         if self._map[x][y] == 'a':
-        #             result = self._get_shortest_path_length(Position(x, y), self._end)
-        #             if result is not None:
-        #                 results.append(result)
-        # return min(results)
         return self._get_shortest_path_length(self._end, 'a', reverse=True)
