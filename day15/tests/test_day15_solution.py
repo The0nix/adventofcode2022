@@ -6,9 +6,9 @@ from day15.solution import DaySolution
 
 def test_part1() -> None:
     solution_tester = SolutionTester(DaySolution(part=1, y=10))
-    solution_tester.test(Path('day15/test_input.txt'), 26)
+    solution_tester.test(Path('day15') / 'inputs' / 'input_test.txt', 26)
 
 
 def test_part2() -> None:
     solution_tester = SolutionTester(DaySolution(part=2, interval_end=20))
-    solution_tester.test(Path('day15/test_input.txt'), 56000011)
+    solution_tester.test(Path('day15') / 'inputs' / 'input_test.txt', 56000011)
