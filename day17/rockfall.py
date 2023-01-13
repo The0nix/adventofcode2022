@@ -1,4 +1,5 @@
-from typing import Type, Iterable, Optional
+from collections.abc import Iterable
+from typing import Type, Optional
 
 from day17.position import Position
 from day17.figure import Figure

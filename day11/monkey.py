@@ -2,7 +2,8 @@ import re
 import itertools
 import math
 from dataclasses import dataclass
-from typing import Iterable, Optional
+from typing import Optional
+from collections.abc import Iterable
 
 Items = list[int]
 MonkeyID = int
