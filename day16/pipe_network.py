@@ -1,3 +1,5 @@
+# pyright: reportUnknownArgumentType=false, reportUnknownMemberType=false
+# pyright: reportUnknownVariableType=false, reportGeneralTypeIssues=false
 import math
 import functools
 import itertools
@@ -81,7 +83,7 @@ class PipeNetwork:
     def _get_floyd_warshall(self) -> dict[str, dict[str, int]]:
         graph = self.get_networkx_graph()
         FW: dict[str, defaultdict[str, float]] = nx.floyd_warshall(graph)
-        FW = {k: v for k, v in FW.items() if self._nodes[k].flow_rate > 0 or self._nodes[k].name == 'AA'}
+        FW = {k: v for k, v in FW.items() if self._nodes[k].flow_rate > 0 or self._nodes[k].name == 'AA'}  # type: ignore
         for src in FW:
             FW[src] = {k: int(v) for k, v in FW[src].items() if k != src and (self._nodes[k].flow_rate > 0 or self._nodes[k].name == 'AA')}
         return FW

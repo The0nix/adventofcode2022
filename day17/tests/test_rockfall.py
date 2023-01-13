@@ -1,11 +1,9 @@
 # pyright: reportPrivateUsage=false
 from pathlib import Path
 
-import numpy as np
 
 from day17.basket import Basket
 from day17.figure import HorizontalLine, Cross, J, VerticalLine, Square
-from day17.position import Position
 from day17.rockfall import RockFall
 
 

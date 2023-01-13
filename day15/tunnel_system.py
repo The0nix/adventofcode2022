@@ -41,7 +41,7 @@ class TunnelSystem:
                 if intervals[i].end > interval_limit.end:
                     intervals[i].end = interval_limit.end
                 if intervals[i].start > intervals[i].end:
-                    intervals[i] = None
+                    intervals[i] = None  # type: ignore
         intervals = [interval for interval in intervals if interval is not None]
         intervals.sort()
         current_start, current_end = intervals[0].start, intervals[0].end
